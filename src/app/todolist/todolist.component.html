@@ -1,0 +1,15 @@
+<input type="text" (keydown)="getTodoBykey($event)" [(ngModel)]="msg"> <button  (click)="getTodoBykey()">确定</button>
+<h2>待办事项</h2>
+<ol>
+  <li *ngFor="let item of list;let i = index"  [hidden]="item.status==2">
+    <input type="checkbox" (click)="changeStatus(i,2)">{{item.listName}}
+    <button (click)="deleteList(i)">删除</button>
+  </li>
+</ol>
+<h2>已完成</h2>
+<ol class="isOk">
+  <li  *ngFor="let item of list;let i = index" [hidden]="item.status==1">
+    <input type="checkbox" checked disabled (click)="changeStatus(i,1)">{{item.listName}}
+    <button (click)="deleteList(i)">删除</button>
+  </li>
+</ol>
